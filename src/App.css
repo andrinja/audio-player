@@ -1,0 +1,56 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.play-button {
+  font-size: 2em;
+  padding: 20px 40px;
+  border-radius: 50px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.play-button:hover {
+  background-color: #45a049;
+}
+
+select, .volume-control {
+  width: 200px;
+  padding: 10px;
+  font-size: 1em;
+}
+
+.volume-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.volume-control label {
+  margin-bottom: 5px;
+}
+
+input[type="range"] {
+  width: 100%;
+}
