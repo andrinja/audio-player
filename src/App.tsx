@@ -7,7 +7,6 @@ import PlayButton from './components/PlayButton';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay, EffectFade} from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
-import Volume from '../src/icons/Volume.svg';
 
 interface Airport {
 	id: string;
@@ -40,7 +39,7 @@ const airports: Airport[] = [
 function App() {
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [selectedAirport, setSelectedAirport] = useState<Airport | undefined>(airports[0]);
-	const [airportImages, setAirportImages] = useState<string[]>(airports[0].images || []);
+	const [airportImages, setAirportImages] = useState<string[]>();
 	const [youtubeVolume, setYoutubeVolume] = useState(50);
 	const [atcVolume, setAtcVolume] = useState(50);
 	const youtubePlayer = useRef<any>(null);
