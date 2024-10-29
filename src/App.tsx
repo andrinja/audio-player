@@ -7,6 +7,7 @@ import PlayButton from './components/PlayButton';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay, EffectFade} from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
+import {Analytics} from '@vercel/analytics/react';
 
 interface Airport {
 	id: string;
@@ -242,6 +243,7 @@ function App() {
 			</div>
 
 			<audio ref={atcAudio} />
+			<Analytics />
 		</div>
 	);
 }
