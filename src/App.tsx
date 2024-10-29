@@ -39,11 +39,17 @@ const airports: Airport[] = [
 function App() {
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [selectedAirport, setSelectedAirport] = useState<Airport | undefined>(airports[0]);
-	const [airportImages, setAirportImages] = useState<string[]>();
+	const [airportImages, setAirportImages] = useState<string[]>([]);
 	const [youtubeVolume, setYoutubeVolume] = useState(50);
 	const [atcVolume, setAtcVolume] = useState(50);
 	const youtubePlayer = useRef<any>(null);
 	const atcAudio = useRef<HTMLAudioElement | null>(null);
+
+	useEffect(() => {
+		if (selectedAirport) {
+			fetchPexelsImages(selectedAirport.city);
+		}
+	}, [selectedAirport]);
 
 	useEffect(() => {
 		if (atcAudio.current) {
@@ -54,7 +60,6 @@ function App() {
 	console.log('Pexels API Key:', import.meta.env.VITE_PEXELS_API_KEY);
 
 	const fetchPexelsImages = async (city: string) => {
-		console.log('test');
 		try {
 			const params = new URLSearchParams({
 				query: city,
