@@ -138,7 +138,7 @@ function App() {
 				modules={[Autoplay, EffectFade]}
 				className='absolute top-0 left-0 h-full w-full z-0'
 			>
-				{airportImages.map((image, index) => (
+				{airportImages?.map((image, index) => (
 					<SwiperSlide key={index}>
 						<img
 							src={image}
