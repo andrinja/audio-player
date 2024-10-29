@@ -18,6 +18,18 @@ interface Airport {
 
 const airports: Airport[] = [
 	{
+		id: 'JFK',
+		name: 'John F Kennedy International Airport',
+		plsUrl: 'http://d.liveatc.net/kjfk_arinc',
+		city: 'New York',
+	},
+	{
+		id: 'TSA',
+		name: 'Taipei Songshan Airport',
+		plsUrl: 'http://d.liveatc.net/rcss2',
+		city: 'Taiwan',
+	},
+	{
 		id: 'VHHH',
 		name: 'Hong Kong Airport',
 		plsUrl: 'http://d.liveatc.net/vhhh5',
@@ -30,10 +42,40 @@ const airports: Airport[] = [
 		city: 'Zurich',
 	},
 	{
-		id: 'EGLL',
-		name: 'Tokyo Airport',
+		id: 'HND',
+		name: 'Tokyo International Airport',
 		plsUrl: 'http://d.liveatc.net/rjtt_app_dep',
 		city: 'Tokyo',
+	},
+	{
+		id: 'RIX',
+		name: 'Riga International Airport',
+		plsUrl: 'http://d.liveatc.net/evra2',
+		city: 'Riga',
+	},
+	{
+		id: 'ADL',
+		name: 'Adelaide International Airport',
+		plsUrl: 'http://d.liveatc.net/ypad_misc',
+		city: 'Adelaide',
+	},
+	{
+		id: 'SVG',
+		name: 'Stavanger Sola Airport',
+		plsUrl: 'http://d.liveatc.net/enzv2',
+		city: 'Stavanger',
+	},
+	{
+		id: 'SBZ',
+		name: 'Sibiu International Airport',
+		plsUrl: 'http://d.liveatc.net/lrsb2',
+		city: 'Sibiu',
+	},
+	{
+		id: 'GVA',
+		name: 'Geneve-Cointrin International Airport',
+		plsUrl: 'http://d.liveatc.net/lsgg_afdt',
+		city: 'Geneva',
 	},
 ];
 
