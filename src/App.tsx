@@ -85,6 +85,8 @@ function App() {
 	const [airportImages, setAirportImages] = useState<string[]>([]);
 	const [youtubeVolume, setYoutubeVolume] = useState(50);
 	const [atcVolume, setAtcVolume] = useState(50);
+	const [isFading, setIsFading] = useState(false);
+
 	const youtubePlayer = useRef<any>(null);
 	const atcAudio = useRef<HTMLAudioElement | null>(null);
 
@@ -103,6 +105,14 @@ function App() {
 	console.log('Pexels API Key:', import.meta.env.VITE_PEXELS_API_KEY);
 
 	const fetchPexelsImages = async (city: string) => {
+		const screenWidth = window.innerWidth;
+		let imageSize = 'large';
+
+		if (screenWidth <= 640) {
+			imageSize = 'small';
+		} else if (screenWidth <= 1024) {
+			imageSize = 'medium';
+		}
 		try {
 			const params = new URLSearchParams({
 				query: city,
@@ -115,13 +125,23 @@ function App() {
 			});
 			const data = await response.json();
 			console.log(data);
-			const images = data.photos.map((photo: any) => photo.src.large);
+			const images = data.photos.map((photo: any) => photo.src[imageSize]);
 			console.log(response);
 			setAirportImages(images);
 		} catch (error) {
 			console.error('Error fetching images from Pexels:', error);
 		}
 	};
+
+	// Fetch images on window resize
+	useEffect(() => {
+		const handleResize = () => {
+			if (selectedAirport) fetchPexelsImages(selectedAirport.city);
+		};
+		window.addEventListener('resize', handleResize);
+
+		return () => window.removeEventListener('resize', handleResize);
+	}, [selectedAirport]);
 
 	useEffect(() => {
 		fetchPexelsImages(airports[0].city);
@@ -142,14 +162,19 @@ function App() {
 
 	const handleAirportChange = (value: string) => {
 		const airport = airports.find((a) => a.id === value);
-		if (airport) {
-			console.log('Selected airport:', airport);
-			setSelectedAirport(airport);
-			playAtcAudio(airport);
-			fetchPexelsImages(airport.city);
-		} else {
-			console.error('Airport not found!');
-		}
+		setIsFading(true);
+		setTimeout(() => {
+			if (airport) {
+				console.log('Selected airport:', airport);
+				setSelectedAirport(airport);
+				playAtcAudio(airport);
+				fetchPexelsImages(airport.city);
+				setIsFading(false);
+			} else {
+				console.error('Airport not found!');
+			}
+			setIsFading(false);
+		}, 1000);
 	};
 
 	const playAtcAudio = async (airport: Airport | undefined) => {
@@ -179,14 +204,14 @@ function App() {
 				effect='fade'
 				autoplay={{delay: 3000}}
 				modules={[Autoplay, EffectFade]}
-				className='absolute top-0 left-0 h-full w-full z-0'
+				className={`absolute top-0 left-0 h-full w-full z-0' ${isFading ? 'black-screen' : ''}`}
 			>
 				{airportImages?.map((image, index) => (
 					<SwiperSlide key={index}>
 						<img
 							src={image}
 							alt={`Airport image ${index + 1}`}
-							className='object-cover h-full w-full'
+							className={`object-cover h-full w-full image-fade ${isFading ? 'fade-out' : ''}`}
 						/>
 					</SwiperSlide>
 				))}
