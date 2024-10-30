@@ -10,7 +10,7 @@ type Props = {
 export default function DropDown({onChange, children, value}: Props) {
 	return (
 		<Select onValueChange={onChange} value={value}>
-			<SelectTrigger className='w-[500px]'>
+			<SelectTrigger className='w-[300px]'>
 				<SelectValue placeholder='Select an airport' />
 			</SelectTrigger>
 			<SelectContent>{children}</SelectContent>
