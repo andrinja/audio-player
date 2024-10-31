@@ -59,4 +59,16 @@ input[type='range'] {
 	object-fit: cover;
 	width: 100%;
 	height: 100vh;
+
+.image-fade {
+	transition: opacity 0.5s ease-in-out;
+}
+
+.fade-out {
+	opacity: 0;
+}
+
+.black-screen {
+	background-color: black;
+	transition: background-color 0.5s ease-in-out;
 }
