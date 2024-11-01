@@ -212,7 +212,7 @@ function App() {
 			</Swiper>
 			<div className='absolute z-10 top-0 left-0 w-full h-full bg-black opacity-70'></div>
 			<div className='relative text-white z-10 flex flex-col items-center justify-center h-full'>
-				<div className='flex-grow flex justify-center items-center'>
+				<div className='flex justify-center items-center flex-col space-y-4'>
 					<PlayButton onClick={handlePlayPause} isPlaying={isPlaying} />
 					<DropDown onChange={handleAirportChange} value={selectedAirport?.id || ''}>
 						{airports.map((airport) => (

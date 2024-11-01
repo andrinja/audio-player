@@ -10,13 +10,13 @@ export default function PlayButton({onClick, isPlaying}: Props) {
 	return (
 		<Button
 			variant='ghost'
-			className='!bg-white w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-10'
+			className='!bg-white w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center mr-10'
 			onClick={onClick}
 		>
 			{isPlaying ? (
-				<PauseIcon className='!text-black h-6 w-6 text-white' />
+				<PauseIcon className='!text-black h-8 w-8 text-white' />
 			) : (
-				<PlayIcon className='!text-black h-6 w-6 text-white' />
+				<PlayIcon className='!text-black h-8 w-8 text-white' />
 			)}
 		</Button>
 	);
