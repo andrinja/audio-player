@@ -210,7 +210,7 @@ function App() {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className='absolute top-0 left-0 w-full h-full bg-black opacity-70 z-5'></div>
+			<div className='absolute z-10 top-0 left-0 w-full h-full bg-black opacity-70'></div>
 			<div className='relative text-white z-10 flex flex-col items-center justify-center h-full'>
 				<div className='flex-grow flex justify-center items-center'>
 					<PlayButton onClick={handlePlayPause} isPlaying={isPlaying} />
